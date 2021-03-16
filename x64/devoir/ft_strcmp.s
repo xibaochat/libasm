@@ -2,19 +2,20 @@ section .text
     global ft_strcmp
 
 ft_strcmp:
-	cmp [rdi], 0
+	mov al, byte [rdi]
+	cmp al, 0
 	je _exit
-	cmp [rsi], 0
+	mov bl, byte [rsi]
+	cmp bl, 0
 	je _exit
-	mov rax, [rdi]
-	cmp rax, [rsi]
+	sub al, bl
+	cmp al, 0
 	jne _exit
 	inc rdi
 	inc rsi
 	jmp ft_strcmp
 
 _exit:
-	mov rax, [rdi]
-	sub [rsi], rax
-	mov rax, [rsi]
+	sub al, bl
+	movzx rax, al
 	ret

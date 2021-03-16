@@ -3,12 +3,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <error.h>
+#include <fcntl.h>
 #include <errno.h>
 
 
 char *ft_strcpy(char* s1, char *s2);
 int ft_strcmp(char* s1, char *s2);
 ssize_t ft_write(int fd, const void *buf, size_t count);
+ssize_t ft_read(int fd, void *buf, size_t count);
+
 
 
 int main() {
@@ -43,23 +46,37 @@ int main() {
 	//test_ft_write
 	int a;
 	int b;
+	/* a = write(FOPEN_MAX + 1, "abcdefghijklmnopqrstuvwxyz\n", 27); */
+	/* perror("write errno"); */
+	/* errno = 100; */
+    /* b = ft_write(FOPEN_MAX + 1, "abcdefghijklmnopqrstuvwxyz\n", 27); */
+	/* perror("ft_write errno"); */
+    /* printf("return write = %d\nreturn ft_write = %d\n", a, b); */
 
-	a = write(FOPEN_MAX + 1, "abcdefghijklmnopqrstuvwxyz\n", 27);
-	perror("write errno");
-	errno = 100;
-    b = ft_write(FOPEN_MAX + 1, "abcdefghijklmnopqrstuvwxyz\n", 27);
-	perror("ft_write errno");
-    printf("return write = %d\nreturn ft_write = %d\n", a, b);
+
+	/* a = write(FOPEN_MAX + 1,NULL, 27); */
+	/* perror("write errno"); */
+	/* errno = 100; */
+    /* b = ft_write(FOPEN_MAX + 1, NULL, 27); */
+	/* perror("ft_write errno"); */
+    /* printf("return write = %d\nreturn ft_write = %d\n", a, b); */
+
+	/* a = write(1, "abcdefghijklmnopqrstuvwxyz\n", 27); */
+    /* b = ft_write(1, "abcdefghijklmnopqrstuvwxyz\n", 27); */
 
 
-	a = write(FOPEN_MAX + 1,NULL, 27);
-	perror("write errno");
-	errno = 100;
-    b = ft_write(FOPEN_MAX + 1, NULL, 27);
-	perror("ft_write errno");
-    printf("return write = %d\nreturn ft_write = %d\n", a, b);
+	//test ft_read
+	int fd = open("cat.txt", O_RDONLY);
+	char buffer[10];
+	a = read(fd, buffer, 10);
+	perror("read errno");
+	printf("sys read:%d chars, they are :%s\n", a, buffer);
 
-	a = write(1, "abcdefghijklmnopqrstuvwxyz\n", 27);
-    b = ft_write(1, "abcdefghijklmnopqrstuvwxyz\n", 27);
+	b = ft_read(fd, buffer, 10);
+	perror("ft_read errno");
+	printf("maobe read:%d chars, they are :%s\n", b, buffer);
+
+	close(fd);
+
 
 }

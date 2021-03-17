@@ -6,10 +6,11 @@ section .text
 ft_write:
 	mov     rax, 1              ; set write to command
     syscall                     ; call kernel
-	jc _ft_write_error			; error sets carry flag, rax = errno
+	cmp rax, 0
+	jl ft_write_error			; error sets carry flag, rax = errno
 	ret
 
-_ft_write_error:
+ft_write_error:
 	neg rax
 	mov r15, rax
 	call  __errno_location WRT ..plt

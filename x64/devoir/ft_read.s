@@ -6,10 +6,11 @@ section .text
 ft_read:
 	mov rax, 0
 	syscall
-	jc _ft_read_error
+	cmp rax, 0
+	jl ft_read_error
 	ret
 
-_ft_read_error:
+ft_read_error:
 	neg rax
 	mov r15, rax
 	call  __errno_location WRT ..plt

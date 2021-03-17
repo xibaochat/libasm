@@ -10,11 +10,11 @@ ft_strdup:
 	inc rax
 	mov rdi, rax
 	call malloc  WRT ..plt
-	jnz   _exit
+	jnz  ft_exit
 	mov rdi, rax
 	mov rsi, r15
 	call ft_strcpy
 	ret
-_exit:
+ft_exit:
 	mov rax, 0
 	ret

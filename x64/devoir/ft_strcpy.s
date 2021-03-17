@@ -14,7 +14,7 @@ ft_strcpy:
 	rep movsb					;move ECX bytes from [RSI] to [RDI]
 	mov BYTE [rdi], 0
 
-	jmp _exit
+	jmp ft_exit
 
-_exit:
+ft_exit:
     ret

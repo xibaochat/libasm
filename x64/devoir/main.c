@@ -77,6 +77,16 @@ int main() {
 	printf("maobe read:%d chars, they are :%s\n", b, buffer);
 
 	close(fd);
+//test ft_strdup
+	printf("my str:%s|machine:%s|\n", ft_strdup(s1), strdup(s1));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s2), strdup(s2));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s3), strdup(s3));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s4), strdup(s4));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s5), strdup(s5));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s6), strdup(s6));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s7), strdup(s7));
+    printf("my str:%s|machine:%s|\n", ft_strdup(s8), strdup(s8));
+
 
 
 }

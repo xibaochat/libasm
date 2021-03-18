@@ -5,8 +5,6 @@ ft_strcmp:
     mov rax, 0
 	mov r8, rdi
 	mov r9, rsi
-	push rdi
-	push rsi
 	mov rcx, -1
     jmp compare
 
@@ -21,9 +19,6 @@ compare:
 exit:
 	mov al, BYTE [r8 + rcx]
 	sub al, BYTE [r9 + rcx]
-	pop rsi
-	pop rdi
-
 	jnc ft_end
 	neg al
 	neg eax

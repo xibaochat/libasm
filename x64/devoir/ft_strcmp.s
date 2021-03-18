@@ -2,28 +2,30 @@ section .text
     global ft_strcmp
 
 ft_strcmp:
-	mov rax, 0
-	jmp compare
+    mov rax, 0
+	mov r8, rdi
+	mov r9, rsi
+	push rdi
+	push rsi
+	mov rcx, -1
+    jmp compare
 
 compare:
-	mov al, BYTE [rdi]
-	mov bl, BYTE [rsi]
-
-	cmp al, 0
+	inc rcx
+    cmp BYTE [r8 + rcx], 0
 	je exit
-
-	cmp bl, 0
-	je exit
-
-	cmp al, bl
-	jne exit
-
-	inc rdi
-	inc rsi
-	jmp compare
+	mov al, BYTE [r8 + rcx]
+    cmp al, BYTE [r9 + rcx]
+    je compare
 
 exit:
-	movzx rax, al
-	movzx rbx, bl
-	sub rax, rbx
+	mov al, BYTE [r8 + rcx]
+	sub al, BYTE [r9 + rcx]
+	pop rsi
+	pop rdi
+
+	jnc ft_end
+	neg al
+	neg eax
+ft_end:
 	ret

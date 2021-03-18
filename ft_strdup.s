@@ -5,16 +5,17 @@ section .text
 	extern malloc
 
 ft_strdup:
-	mov r15, rdi
+	;; 	mov r15, rdi
+	push rdi
 	call ft_strlen
 	inc rax
 	mov rdi, rax
 	call malloc  WRT ..plt
-	jnz  ft_exit
+	je  ft_exit
+	pop rsi
 	mov rdi, rax
-	mov rsi, r15
 	call ft_strcpy
 	ret
 ft_exit:
-	mov rax, 0
+	pop rdi
 	ret

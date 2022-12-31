@@ -1,7 +1,7 @@
 <h1 align="center">
    <b font size="15" face="arial" ><br><br>libasm</font></b></h1>
    <p align="center">
-   Repeated calls to get_next_line() function should let you read the text file pointed to by the file descriptor, one line at a time.
+  recode basic functions in asm
  <p align="center">
   <img src="https://img.shields.io/badge/assembly-007ACC?style=for-the-badge&logo=assembly&logoColor=white">
   <table  align="center">
